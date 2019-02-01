@@ -44,14 +44,23 @@ def board_to_discord(grid, empty='       '):
     return '\n'.join(''.join(map(lambda n: REPR[n+1], row)) for row in grid)
 
 if __name__ == '__main__':
-    if len(sys.argv) < 4:
-        print("Syntax: {} nrows ncols nbombs".format(sys.argv[0]))
+    def help_and_exit():
+        print("""Syntax: {} nrows ncols nbombs [blank]
+  [blank] is an optional argument indicating the representation to use
+  for blank squares. By default it is seven spaces, which aligns
+  properly in the default font.""".format(sys.argv[0]))
         quit()
+
+    if len(sys.argv) < 4:
+        help_and_exit()
     try:
         nrows = int(sys.argv[1])
         ncols = int(sys.argv[2])
         nbombs = int(sys.argv[3])
     except ValueError:
-        print("Syntax: {} nrows ncols nbombs".format(sys.argv[0]))
-        quit()
-    print(board_to_discord(generate_board(nrows, ncols, nbombs)))
+        help_and_exit()
+
+    empty = ' ' * 7
+    if len(sys.argv) > 4:
+        empty = sys.argv[4]
+    print(board_to_discord(generate_board(nrows, ncols, nbombs), empty))
