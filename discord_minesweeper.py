@@ -1,5 +1,6 @@
 import math
 import random
+import sys
 
 class Bomb:
     def __init__(self, x, y):
@@ -41,3 +42,16 @@ def board_to_discord(grid, empty=':__:'):
     """
     REPR = [':bomb:', empty, ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:']
     return '\n'.join(''.join(map(lambda n: REPR[n+1], row)) for row in grid)
+
+if __name__ == '__main__':
+    if len(sys.argv) < 4:
+        print("Syntax: {} nrows ncols nbombs".format(sys.argv[0]))
+        quit()
+    try:
+        nrows = int(sys.argv[1])
+        ncols = int(sys.argv[2])
+        nbombs = int(sys.argv[3])
+    except ValueError:
+        print("Syntax: {} nrows ncols nbombs".format(sys.argv[0]))
+        quit()
+    print(board_to_discord(generate_board(nrows, ncols, nbombs)))
