@@ -41,7 +41,7 @@ def board_to_discord(grid, empty='       '):
        representation should be used for an empty square.
     """
     REPR = [':bomb:', empty, ':one:', ':two:', ':three:', ':four:', ':five:', ':six:', ':seven:', ':eight:']
-    return '\n'.join(''.join(map(lambda n: REPR[n+1], row)) for row in grid)
+    return '\n'.join(''.join(map(lambda n: "||{}||".format(REPR[n+1]), row)) for row in grid)
 
 if __name__ == '__main__':
     def help_and_exit():
