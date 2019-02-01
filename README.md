@@ -19,7 +19,7 @@ Produces (oops):
 
 ![sample minesweeper board](https://raw.githubusercontent.com/alpha123/discord-minesweeper/master/sample.png)
 
-**Usage**
+## Usage
 
 `python discord_minesweeper.py nrows ncols nbombs [blank]`
 
