@@ -35,7 +35,7 @@ def generate_board(nrows, ncols, nbombs):
                 grid[r][c] = nadjacent
     return grid
 
-def board_to_discord(grid, empty=':__:'):
+def board_to_discord(grid, empty='       '):
     """Turn a board from `generate_board` into a message using Discord
        spoilers and emoji. The `empty` parameter is what
        representation should be used for an empty square.
